@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+div.main_wrapper{
+	border:1px solid black;
+	padding:0;
+	margin:20px 20px;
+	
+	}
+
+div.wrapper{
+	border-bottom:1px solid black;
+	}
+	
+div.content{
+	border-bottom:1px solid black;
+	border-top:none;
+	padding:100px 0; /* reduce or increase padding here for page to fill up*/
+	}
+	
+div.footer{
+	height:30px;
+	border-bottom:none;
+	
+	}
+	
+div.inner{
+	border:1px solid black;
+	}
+	
+div.title{
+	text-align:center;
+/*	border:1px solid black;*/
+	
+	}
+	
+div.uniq{
+	border:1px solid black;
+	}
+	
+h4{
+	float:left;
+	margin-right: 20px;
+}
+body{
+	background-color: #42e2f4
+}
+.row-fluid p{
+	color:green;
+}
