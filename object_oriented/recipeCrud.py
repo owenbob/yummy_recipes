@@ -12,10 +12,10 @@ class RecipeCrud:
     def add_recipe(self, recipe):
         self.last_recipe_id += 1
         self.recipes[self.last_recipe_id] = recipe
-        recipe._id = self.last_recipe_id
+        #recipe._id = self.last_recipe_id
 
     def update_recipe(self, recipe):
-        self.recipes[recipe._d] = recipe
+        self.recipes[recipe._id] = recipe
 
     def delete_recipe(self, recipe_id):
         del self.recipes[recipe_id]
