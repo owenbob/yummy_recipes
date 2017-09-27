@@ -15,8 +15,8 @@ def create_app():
     app.register_blueprint(main)
 
     app.recipeCrud = RecipeCrud()
-    app.recipeCrud.add_recipe(Recipe('Chicken Stew', 'water, chicken, tomatoes', 'you put three'))
-    app.recipeCrud.add_recipe(Recipe('African yams', 'water, yams','peel the yams and boil in water'))
+    #app.recipeCrud.add_recipe(Recipe('Chicken Stew', 'water, chicken, tomatoes', 'you put three'))
+    #app.recipeCrud.add_recipe(Recipe('African yams', 'water, yams','peel the yams and boil in water'))
 
     return app
 

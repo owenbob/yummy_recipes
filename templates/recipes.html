@@ -3,11 +3,22 @@
 {% block title %}Recipe List{% endblock %}
 
 {% block content %}
+<div class='page-header'>
+    <h2>Recipes</h2>
+  </div>
+  
+  
     {% if recipes %}
+    <ul class="list-unstyled">
       {% for recipe_id, recipe in recipes %}
-        {{ recipe.title }}
-        {{ recipe.ingridient }}
-        {{ recipe.desc}}
+        <a href="{{url_for('main.recipe_page', recipe_id=recipe_id)}}">
+          <li>
+            {{ recipe.title }}
+            {{ recipe.ingridient }}
+            {{ recipe.desc}}
+          </li>
+        </a>
       {% endfor %}  
+    </ul>
     {% endif %}
 {% endblock %}
