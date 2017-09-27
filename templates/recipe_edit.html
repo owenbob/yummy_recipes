@@ -12,6 +12,11 @@
           <div class="col-sm-10">
             <input type="text" name="title" required autofocus
                    value="{{ form['title'] }}" />
+                   {% if 'title' in form.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.errors['title'] }}
+                    </div>
+                   {% endif %}
           </div>
         </div>
 
@@ -20,6 +25,11 @@
           <div class="col-sm-10">
             <textarea
                    value="{{ form['ingridient'] }}" ></textarea>
+                   {% if 'ingridient' in form.errors %}
+                   <div class="alert alert-danger">
+                       {{ form.errors['ingridient'] }}
+                   </div>
+                  {% endif %}
           </div>
         </div>
 
@@ -28,6 +38,11 @@
                 <div class="col-sm-10">
                   <textarea
                          value="{{ form['desc'] }}" ></textarea>
+                         {% if 'desc' in form.errors %}
+                         <div class="alert alert-danger">
+                             {{ form.errors['desc'] }}
+                         </div>
+                        {% endif %}
                 </div>
               </div>
 
