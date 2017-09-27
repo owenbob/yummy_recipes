@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+    <title>Yummy Recipes{% block title %}{% endblock %}</title>
+
+    <link href="{{url_for('static', filename='styles/normalize.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static', filename='bootstrap/css/bootstrap-responsive.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static', filename='styles/custom.css')}}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar mg-b=5">
+            <div class="container">
+                <div class="navbar-header">
+                        <div class="row-fluid margin-top">
+                            <div class="span3"><a href="/" class="btn">Home</a></div>
+                            <div class="span3"><a href="#" class="btn">View Public Recipes</a></div>
+                            <div class="span2 offset4"><a href="{{url_for('main.login')}}" class="btn bold">Sign In</a></div>
+                        </div> 
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container" role="main">
+        {% block content %}{% endblock %} 
+    </div>
+
+   <footer>
+       &copy; 2017, Emmisteel
+   </footer>
+
+   <script src="{{url_for('static', filename='bootstrap/js/jquery-latest.js')}}"></script>
+   
+   <!--include all compiled plugins-->
+   <script src="{{url_for('static', filename='bootstrap/js/bootstrap.min.js')}}"></script>
+
+</body>
+</html>

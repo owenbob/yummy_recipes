@@ -15,6 +15,10 @@ def index():
 def login():
     return render_template('login.html')
 
+@main.route('/addrecipe')
+def addrecipe():
+    return render_template('addrecipe.html')
+
 
 @main.route('/recipes')
 def movies_page():
