@@ -2,11 +2,13 @@
 #third party import
 from flask import Blueprint, render_template, current_app, request, redirect, url_for
 
+main = Blueprint('main', __name__)
+
 
 #local import
 from recipe import Recipe
 from forms import RecipeEditForm
-from initial import main
+#from initial import main
 
 
 @main.route('/')

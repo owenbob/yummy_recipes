@@ -1,23 +1,31 @@
-# manage.py
-
-#third party import
-import os
-from flask_script import Manager, Shell
+# manage.py 
+# third party import
+from flask import Flask
 
 
 #local import
-from initial import create_app
+from views import main
+from recipe import Recipe
+from recipeCrud import RecipeCrud
+
+# Define an Application factory
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object('config')
+    app.register_blueprint(main)
+
+    app.recipeCrud = RecipeCrud()
+    #app.recipeCrud.add_recipe(Recipe('Chicken Stew', 'water, chicken, tomatoes', 'you put three'))
+    #app.recipeCrud.add_recipe(Recipe('African yams', 'water, yams','peel the yams and boil in water'))
+
+    return app
 
 
-# Initialization
-app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-manager = Manager(app)
-
-
-def make_shell_context():
-    return dict(app=app)
-manager.add_command('shell', Shell(make_context=make_shell_context))
+def main_point():
+    app = create_app()
+    debug = app.config['DEBUG']
+    app.run(debug=True)
 
 
 if __name__ == '__main__':
-    manager.run()
+    main_point()
