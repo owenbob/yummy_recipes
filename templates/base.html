@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     
-    <title>Yummy Recipes{% block title %}{% endblock %}</title>
+    <title>Yummy Recipes - {% block title %}{% endblock %}</title>
 
     <link href="{{url_for('static', filename='styles/normalize.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="navbar-header">
                         <div class="row-fluid margin-top">
-                            <div class="span2"><a href="/" class="btn">Home</a></div>
+                            <div class="span2"><a href="#" class="btn">Home</a></div>
                             <div class="span2"><a href="{{url_for('main.recipes_page')}}" class="btn">View Public Recipes</a></div>
                             <div class="span2"><a href="{{url_for('main.recipe_add_page')}}" class="btn">Add a Recipe</a></div>
                             <div class="span2 offset4"><a href="{{url_for('main.login')}}" class="btn bold">Sign In</a></div>
