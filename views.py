@@ -1,6 +1,6 @@
 # views.py
 #third party import
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, current_app
 
 
 main = Blueprint('main', __name__)
@@ -21,5 +21,6 @@ def addrecipe():
 
 
 @main.route('/recipes')
-def movies_page():
-    return render_template('recipes.html')
+def recipes_page():
+    recipes = current_app.recipeCrud.get_recipes()
+    return render_template('recipes.html', recipes=sorted(recipes.items()))
