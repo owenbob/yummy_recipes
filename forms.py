@@ -7,11 +7,11 @@ from wtforms_components import IntegerField
 
 class RecipeEditForm(FlaskForm):
     title = StringField(
-        'Title', validators=[DataRequired]
+        'Title', validators=[DataRequired()]
     )
 
     ingridient = TextAreaField(
-        'Ingridient', validators=[DataRequired]
+        'Ingridient', validators=[DataRequired()]
     )
 
     desc = TextAreaField(
