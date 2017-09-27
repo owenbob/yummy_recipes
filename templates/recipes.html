@@ -9,16 +9,22 @@
   
   
     {% if recipes %}
+    <form role="form" action="" method="post" name="recipes" class="form-vertical">
+
     <ul class="list-unstyled">
       {% for recipe_id, recipe in recipes %}
-        <a href="{{url_for('main.recipe_page', recipe_id=recipe_id)}}">
           <li>
+            <input type="checkbox" name="recipe_ids" value="{{recipe_id}}" />
+            <a href="{{ url_for('main.recipe_page', recipe_id=recipe_id) }}">
             {{ recipe.title }}
             {{ recipe.ingridient }}
             {{ recipe.desc}}
+          </a>
           </li>
-        </a>
+        
       {% endfor %}  
     </ul>
+    <button type="submit" name="delete" class="btn btn-primary">Delete</button>
+    </form>
     {% endif %}
 {% endblock %}
