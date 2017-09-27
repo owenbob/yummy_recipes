@@ -5,9 +5,8 @@ from flask import Blueprint, render_template, current_app, request, redirect, ur
 
 #local import
 from recipe import Recipe
-from validator import validate_recipe_data
-
-main = Blueprint('main', __name__)
+from forms import RecipeEditForm
+from initial import main
 
 
 @main.route('/')
@@ -37,37 +36,30 @@ def recipe_page(recipe_id):
 
 @main.route('/recipes/add', methods=['GET', 'POST'])
 def recipe_add_page():
-    if request.method == 'GET':
-        form = {'title':'', 'ingridient':'', 'desc': ''}
-        
-    else:
-        valid = validate_recipe_data(request.form)
-        if valid:
-            title = request.form['title']
-            ingridient = request.form['ingridient']
-            desc = request.form['desc']
-            recipe = Recipe(title, ingridient, desc)
-            current_app.recipeCrud.add_recipe(recipe)
-            return redirect(url_for('main.recipe_page', recipe_id=recipe._id))
-        form = request.form
+    form = RecipeEditForm()
+    if form.validate_on_submit():
+        title = form.data['title']
+        ingridient = form.data['ingridient']
+        desc = form.data['desc']
+
+        recipe = Recipe(title, ingridient, desc)
+
+        current_app.recipeCrud.add_recipe(recipe)
+        return redirect(url_for('main.recipe_page', recipe_id=recipe._id))
     return render_template('recipe_edit.html', form=form)
 
 @main.route('/recipe/<int:recipe_id>/edit', methods=['GET', 'POST'])
 def recipe_edit_page(recipe_id):
     recipe = current_app.recipeCrud.get_recipe(recipe_id)
-    if request.method == 'GET':
-        form = {'title':recipe.title,
-                'ingridient': recipe.ingridient,
-                'desc': recipe.desc
-        }
+    form = RecipeEditForm()
+    if form.validate_on_submit():
+        recipe.title = form.data['title']
+        recipe.ingridient = form.data['ingridient']
+        recipe.desc = form.data['desc']
 
-    else:
-        valid = validate_recipe_data(request.form)
-        if valid:
-            recipe.title = request.form['title']
-            recipe.ingridient = request.form['ingridient']
-            recipe.desc = request.form['desc']
-            current_app.recipeCrud.update_recipe(recipe)
-            return redirect(url_for('main.recipe_page', recipe_id=recipe._id))
-        form = request.form
-    return render_template('recipe_edt.html', form=form)
+        current_app.recipeCrud.update_recipe(recipe)
+        return redirect(url_for('main.recipe_page', recipe_id=recipe._id))
+    form.title.data = recipe.title
+    form.ingridient.data = recipe.ingridient
+    form.desc.data = recipe.desc
+    return render_template('recipe_edit.html', form=form)
