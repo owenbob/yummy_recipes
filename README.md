@@ -1,3 +1,5 @@
+https://travis-ci.org/oxenprogrammer/yummy_recipes.svg?branch=master
+
 Yummy Recipes
 
 
